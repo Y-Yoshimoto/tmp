@@ -1,0 +1,2 @@
+# インストールライブラリー
+pip install requests
