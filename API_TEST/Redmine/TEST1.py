@@ -16,11 +16,15 @@ issues1 = requests.get(accessURL, auth=(REDMINEUSER, REDMINEPASSWORD))
 # print json.dumps(issues1.text, ensure_ascii=False)
 #print issues1.text.encode('utf-8')
 
-# f = open('newisses.json', 'r')
 with open('newisses.json', 'r') as f:
 	json_dict = json.load(f)
 	print json_dict
-	
-# print json.dumps(f.read(), ensure_ascii=False)
-#print json.dump(issues1.json(), f, ensure_ascii=False, indent = 4)
+# issues2 = json.dumps(json_dict, ensure_ascii=False)
+issues2 = json.dumps(json_dict)
+
+print type(issues2)
+accessURL_post = REDMINEURL + 'issues.json'
+# headers = {'Content-Type': 'application/json'}
+post = requests.post(accessURL_post, data= issues2, headers={'Content-Type': 'application/json'} , auth=(REDMINEUSER, REDMINEPASSWORD))
+print post.status_code
 f.close()
