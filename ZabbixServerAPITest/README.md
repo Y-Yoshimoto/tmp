@@ -10,7 +10,7 @@
 ```bash
     npm update -g npm
     npm init
-
+    npm install request --save
 ```
 
 ## APIリファレンス
