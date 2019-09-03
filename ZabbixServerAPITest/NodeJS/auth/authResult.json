@@ -1,1 +1,5 @@
-{"jsonrpc":"2.0","result":"d4003b773a0c979e16ac1017be7397e3","id":1}
+{
+    "jsonrpc": "2.0",
+    "result": "42cf3a680ffbee70f7e7ee56547245bc",
+    "id": 1
+}

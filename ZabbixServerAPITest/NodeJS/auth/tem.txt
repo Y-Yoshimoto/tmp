@@ -1,0 +1,1 @@
+http://192.168.1.116/chart2.php?graphid=524&screenid=16&width=400&height=156&legend=1&profileIdx=web.screens.filter&profileIdx2=16&from=2019-09-01%2000%3A00%3A00&to=2019-09-30%2000%3A00%3A00&_=tso03wtm

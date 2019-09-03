@@ -9,6 +9,8 @@
   "author": "y-yoshimoto",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "sync-request": "^6.1.0",
+    "then-request": "^6.0.2"
   }
 }
