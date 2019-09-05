@@ -1,0 +1,61 @@
+ % File name: main.tex
+ %\documentclass[uplatex,a4paper]{jsarticle}
+ \documentclass[uplatex,a4paper,landscape]{jsarticle}
+ % 設定ファイルの読み込み
+\input Input-File/setting.tex
+
+%マクロ定義
+\newcommand{\threeImage}[1][./Image/graph.png]{
+\begin{minipage}{0.33\hsize}
+ \begin{center}
+  \includegraphics[width=4cm]{{#1}}
+ \end{center}
+ %\caption{一つめの図}
+ %\label{fig:one}
+\end{minipage}
+}
+
+%表紙内容
+%\title{タイトル}
+%\department{所属}
+%\author{氏名}
+%\date{\today}
+
+\begin{document}
+%\maketitle
+%\thispagestyle{empty}
+%\clearpage
+% 目次
+%\tableofcontents
+%\clearpage
+
+%本文
+\section{HOST1}
+% 画像1行目
+\begin{figure}[htbp]
+ \begin{minipage}{0.33\hsize}
+  \begin{center}
+   \includegraphics[width=4cm]{./Image/graph.png}
+  \end{center}
+  \caption{一つめの図}
+  \label{fig:one}
+ \end{minipage}
+ \begin{minipage}{0.33\hsize}
+ \begin{center}
+  \includegraphics[width=40mm]{./Image/graph.png}
+ \end{center}
+  \caption{二つめの図}
+  \label{fig:two}
+ \end{minipage}
+ \begin{minipage}{0.33\hsize}
+ \begin{center}
+  \includegraphics[width=40mm]{./Image/graph.png}
+ \end{center}
+  \caption{三つめの図}
+  \label{fig:three}
+ \end{minipage}
+\end{figure}
+
+%参考文献など
+
+\end{document}
