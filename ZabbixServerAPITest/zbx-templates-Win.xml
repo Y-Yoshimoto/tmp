@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-04-20T05:56:26Z</date>
+    <date>2020-04-21T05:39:14Z</date>
     <groups>
         <group>
             <name>テンプレート</name>
@@ -12,8 +12,8 @@
     </groups>
     <templates>
         <template>
-            <template>Windows CPU</template>
-            <name>Windows CPU</name>
+            <template>Windows CPU JP</template>
+            <name>Windows CPU JP</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
                 <group>
@@ -76,7 +76,7 @@ hardware failure. This should never be higher than 20%.</description>
                             <dependencies>
                                 <dependency>
                                     <name>CPU高負荷 [5分] (over {$CPU.UTIL.CRIT}%)</name>
-                                    <expression>{Windows CPU:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                    <expression>{Windows CPU JP:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -106,11 +106,11 @@ functions of the Windows® Operating System.</description>
                             <dependencies>
                                 <dependency>
                                     <name>CPU interrupt time is too high (over {$CPU.INTERRUPT.CRIT.MAX}% for 5m)</name>
-                                    <expression>{Windows CPU:perf_counter_en[&quot;\Processor Information(_total)\% Interrupt Time&quot;].min(5m)}&gt;{$CPU.INTERRUPT.CRIT.MAX}</expression>
+                                    <expression>{Windows CPU JP:perf_counter_en[&quot;\Processor Information(_total)\% Interrupt Time&quot;].min(5m)}&gt;{$CPU.INTERRUPT.CRIT.MAX}</expression>
                                 </dependency>
                                 <dependency>
                                     <name>CPU高負荷 [5分] (over {$CPU.UTIL.CRIT}%)</name>
-                                    <expression>{Windows CPU:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                    <expression>{Windows CPU JP:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -166,7 +166,7 @@ and are waiting to be executed.</description>
                             <dependencies>
                                 <dependency>
                                     <name>CPU高負荷 [5分] (over {$CPU.UTIL.CRIT}%)</name>
-                                    <expression>{Windows CPU:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
+                                    <expression>{Windows CPU JP:system.cpu.util.min(5m)}&gt;{$CPU.UTIL.CRIT}</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -233,7 +233,7 @@ and are waiting to be executed.</description>
             </macros>
         </template>
         <template>
-            <template>Windows CPU Thread</template>
+            <template>Windows CPU Thread JP</template>
             <name>Windows CPUスレッド</name>
             <description>Windows CPUスレッド毎の監視</description>
             <groups>
@@ -276,7 +276,7 @@ and are waiting to be executed.</description>
                                 <graph_item>
                                     <color>199C0D</color>
                                     <item>
-                                        <host>Windows CPU Thread</host>
+                                        <host>Windows CPU Thread JP</host>
                                         <key>system.cpu.util[{#CPU.NUMBER},system,avg1]</key>
                                     </item>
                                 </graph_item>
@@ -287,7 +287,7 @@ and are waiting to be executed.</description>
             </discovery_rules>
         </template>
         <template>
-            <template>Windows EventLog</template>
+            <template>Windows EventLog JP</template>
             <name>Windows イベントログ</name>
             <description>Windowsログ監視用テンプレート</description>
             <groups>
@@ -422,7 +422,7 @@ and are waiting to be executed.</description>
             </macros>
         </template>
         <template>
-            <template>Windows filesystems</template>
+            <template>Windows filesystems JP</template>
             <name>Windows ファイルシステム</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -524,8 +524,8 @@ and are waiting to be executed.</description>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Windows filesystems:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
-(({Windows filesystems:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Windows filesystems:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <expression>{Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Windows filesystems JP:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems JP:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                             <name>{#FSNAME}: 空き容量減少 (used &gt; {$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
                             <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
                             <priority>AVERAGE</priority>
@@ -535,8 +535,8 @@ and are waiting to be executed.</description>
  - The disk will be full in less than 24 hours.</description>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Windows filesystems:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;} and&#13;
-(({Windows filesystems:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems:vfs.fs.size[{#FSNAME},used].last()})&lt;10G or {Windows filesystems:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <expression>{Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;} and&#13;
+(({Windows filesystems JP:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems JP:vfs.fs.size[{#FSNAME},used].last()})&lt;10G or {Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                             <name>{#FSNAME}: 空き容量減少 (used &gt; {$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;}%)</name>
                             <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
                             <priority>WARNING</priority>
@@ -547,8 +547,8 @@ and are waiting to be executed.</description>
                             <dependencies>
                                 <dependency>
                                     <name>{#FSNAME}: 空き容量減少 (used &gt; {$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
-                                    <expression>{Windows filesystems:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
-(({Windows filesystems:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Windows filesystems:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                                    <expression>{Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Windows filesystems JP:vfs.fs.size[{#FSNAME},total].last()}-{Windows filesystems JP:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Windows filesystems JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
@@ -565,7 +565,7 @@ and are waiting to be executed.</description>
                                     <color>C80000</color>
                                     <calc_fnc>ALL</calc_fnc>
                                     <item>
-                                        <host>Windows filesystems</host>
+                                        <host>Windows filesystems JP</host>
                                         <key>vfs.fs.size[{#FSNAME},pused]</key>
                                     </item>
                                 </graph_item>
@@ -583,7 +583,7 @@ and are waiting to be executed.</description>
                                     <calc_fnc>ALL</calc_fnc>
                                     <type>GRAPH_SUM</type>
                                     <item>
-                                        <host>Windows filesystems</host>
+                                        <host>Windows filesystems JP</host>
                                         <key>vfs.fs.size[{#FSNAME},total]</key>
                                     </item>
                                 </graph_item>
@@ -592,7 +592,7 @@ and are waiting to be executed.</description>
                                     <color>C80000</color>
                                     <calc_fnc>ALL</calc_fnc>
                                     <item>
-                                        <host>Windows filesystems</host>
+                                        <host>Windows filesystems JP</host>
                                         <key>vfs.fs.size[{#FSNAME},used]</key>
                                     </item>
                                 </graph_item>
@@ -645,7 +645,7 @@ and are waiting to be executed.</description>
             </macros>
         </template>
         <template>
-            <template>Windows generic</template>
+            <template>Windows generic JP</template>
             <name>Windows 一般</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -814,7 +814,7 @@ and are waiting to be executed.</description>
             </macros>
         </template>
         <template>
-            <template>Windows memory</template>
+            <template>Windows memory JP</template>
             <name>Windows メモリ</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -865,7 +865,7 @@ than 5,000, there may well be a memory leak or you running out of memory.</descr
                             <dependencies>
                                 <dependency>
                                     <name>メモリ使用率上昇 [5分] ( &gt;{$MEMORY.UTIL.MAX}%)</name>
-                                    <expression>{Windows memory:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                                    <expression>{Windows memory JP:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -909,7 +909,7 @@ If the value is greater than 1,000, as a result of excessive paging, there may b
                             <dependencies>
                                 <dependency>
                                     <name>メモリ使用率上昇 [5分] ( &gt;{$MEMORY.UTIL.MAX}%)</name>
-                                    <expression>{Windows memory:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                                    <expression>{Windows memory JP:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -1051,7 +1051,7 @@ A typical Event ID 2019 is recorded in the system event log.</description>
             </macros>
         </template>
         <template>
-            <template>Windows network</template>
+            <template>Windows network JP</template>
             <name>Windows ネットワーク</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -1368,20 +1368,20 @@ WARNING: if closed manually - won't fire again on next poll, because of .diff.</
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].change()}&lt;0 and {Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()}&gt;0&#13;
+                            <expression>{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].change()}&lt;0 and {Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()}&gt;0&#13;
 and (&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=6 or&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=7 or&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=11 or&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=62 or&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=69 or&#13;
-{Windows network:net.if.type[&quot;{#IFNAME}&quot;].last()}=117&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=6 or&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=7 or&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=11 or&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=62 or&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=69 or&#13;
+{Windows network JP:net.if.type[&quot;{#IFNAME}&quot;].last()}=117&#13;
 )&#13;
 and&#13;
-({Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2)</expression>
+({Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2)</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>({Windows network:net.if.speed[&quot;{#IFNAME}&quot;].change()}&gt;0 and {Windows network:net.if.speed[&quot;{#IFNAME}&quot;].prev()}&gt;0) or&#13;
-({Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}=2)</recovery_expression>
+                            <recovery_expression>({Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].change()}&gt;0 and {Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].prev()}&gt;0) or&#13;
+({Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}=2)</recovery_expression>
                             <name>If {#IFNAME}({#IFALIAS}): 速度低下</name>
                             <opdata>Current reported speed: {ITEM.LASTVALUE1}</opdata>
                             <priority>INFO</priority>
@@ -1389,17 +1389,17 @@ and&#13;
                             <dependencies>
                                 <dependency>
                                     <name>If {#IFNAME}({#IFALIAS}): リンクダウン</name>
-                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
-                                    <recovery_expression>{Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
+                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
+                                    <recovery_expression>{Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Windows network:net.if.in[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}&#13;
-or {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}</expression>
+                            <expression>{Windows network JP:net.if.in[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}&#13;
+or {Windows network JP:net.if.out[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>{Windows network:net.if.in[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8&#13;
-and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8</recovery_expression>
+                            <recovery_expression>{Windows network JP:net.if.in[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8&#13;
+and {Windows network JP:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8</recovery_expression>
                             <name>If {#IFNAME}({#IFALIAS}): 高エラー ( &gt; {$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;} for 5m)</name>
                             <opdata>errors in: {ITEM.LASTVALUE1}, errors out: {ITEM.LASTVALUE2}</opdata>
                             <priority>WARNING</priority>
@@ -1407,18 +1407,18 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                             <dependencies>
                                 <dependency>
                                     <name>If {#IFNAME}({#IFALIAS}): リンクダウン</name>
-                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
-                                    <recovery_expression>{Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
+                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
+                                    <recovery_expression>{Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>({Windows network:net.if.in[&quot;{#IFNAME}&quot;].avg(15m)}&gt;({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}/100)*{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()} or&#13;
-{Windows network:net.if.out[&quot;{#IFNAME}&quot;].avg(15m)}&gt;({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}/100)*{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()}) and&#13;
-{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()}&gt;0</expression>
+                            <expression>({Windows network JP:net.if.in[&quot;{#IFNAME}&quot;].avg(15m)}&gt;({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}/100)*{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()} or&#13;
+{Windows network JP:net.if.out[&quot;{#IFNAME}&quot;].avg(15m)}&gt;({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}/100)*{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()}) and&#13;
+{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()}&gt;0</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>{Windows network:net.if.in[&quot;{#IFNAME}&quot;].avg(15m)}&lt;(({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}-3)/100)*{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()} and&#13;
-{Windows network:net.if.out[&quot;{#IFNAME}&quot;].avg(15m)}&lt;(({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}-3)/100)*{Windows network:net.if.speed[&quot;{#IFNAME}&quot;].last()}</recovery_expression>
+                            <recovery_expression>{Windows network JP:net.if.in[&quot;{#IFNAME}&quot;].avg(15m)}&lt;(({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}-3)/100)*{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()} and&#13;
+{Windows network JP:net.if.out[&quot;{#IFNAME}&quot;].avg(15m)}&lt;(({$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}-3)/100)*{Windows network JP:net.if.speed[&quot;{#IFNAME}&quot;].last()}</recovery_expression>
                             <name>If {#IFNAME}({#IFALIAS}): 高負荷 ( &gt; {$IF.UTIL.MAX:&quot;{#IFNAME}&quot;}% )</name>
                             <opdata>In: {ITEM.LASTVALUE1}, out: {ITEM.LASTVALUE3}, speed: {ITEM.LASTVALUE2}</opdata>
                             <priority>WARNING</priority>
@@ -1426,8 +1426,8 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                             <dependencies>
                                 <dependency>
                                     <name>If {#IFNAME}({#IFALIAS}): リンクダウン</name>
-                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
-                                    <recovery_expression>{Windows network:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
+                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}=2 and {Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].diff()}=1)</expression>
+                                    <recovery_expression>{Windows network JP:net.if.status[&quot;{#IFNAME}&quot;].last()}&lt;&gt;2</recovery_expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
@@ -1440,7 +1440,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;]</key>
                                     </item>
                                 </graph_item>
@@ -1449,7 +1449,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <drawtype>BOLD_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;]</key>
                                     </item>
                                 </graph_item>
@@ -1458,7 +1458,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <color>F63100</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;,errors]</key>
                                     </item>
                                 </graph_item>
@@ -1467,7 +1467,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <color>A54F10</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;,errors]</key>
                                     </item>
                                 </graph_item>
@@ -1476,7 +1476,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <color>FC6EA3</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;,dropped]</key>
                                     </item>
                                 </graph_item>
@@ -1485,7 +1485,7 @@ and {Windows network:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.E
                                     <color>6C59DC</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Windows network</host>
+                                        <host>Windows network JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;,dropped]</key>
                                     </item>
                                 </graph_item>
@@ -1592,7 +1592,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
                             <style>0</style>
                             <resource>
                                 <name>If {#IFNAME}({#IFALIAS}): ネットワークトラフィック</name>
-                                <host>Windows network</host>
+                                <host>Windows network JP</host>
                             </resource>
                             <width>750</width>
                             <height>100</height>
@@ -1614,7 +1614,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
             </screens>
         </template>
         <template>
-            <template>Windows physical disks</template>
+            <template>Windows physical disks JP</template>
             <name>Windows 物理ディスク</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -1781,7 +1781,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
                                 <graph_item>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>Windows physical disks</host>
+                                        <host>Windows physical disks JP</host>
                                         <key>vfs.dev.read.rate[DiskReadsPersec.{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1790,7 +1790,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Windows physical disks</host>
+                                        <host>Windows physical disks JP</host>
                                         <key>vfs.dev.write.rate[DiskWritesPersec.{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1803,7 +1803,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
                                     <color>1A7C11</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Windows physical disks</host>
+                                        <host>Windows physical disks JP</host>
                                         <key>vfs.dev.queue_size[CurrentDiskQueueLength.{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1812,7 +1812,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Windows physical disks</host>
+                                        <host>Windows physical disks JP</host>
                                         <key>vfs.dev.util[PercentDiskTime.{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -1861,7 +1861,7 @@ return JSON.stringify({&quot;data&quot;: output})</params>
             </macros>
         </template>
         <template>
-            <template>Windows Server Template</template>
+            <template>Windows Server Template JP</template>
             <name>Windows Server テンプレート(2019)</name>
             <description>Official Windows template. Requires agent of Zabbix 4.4 and newer.&#13;
 &#13;
@@ -1871,40 +1871,40 @@ You can discuss this template or leave feedback on our forum https://www.zabbix.
 Template tooling version used: 0.34</description>
             <templates>
                 <template>
-                    <name>ICMP Ping_JP</name>
+                    <name>ICMP Ping_JP JP</name>
                 </template>
                 <template>
-                    <name>Windows CPU</name>
+                    <name>Windows CPU JP</name>
                 </template>
                 <template>
-                    <name>Windows CPU Thread</name>
+                    <name>Windows CPU Thread JP</name>
                 </template>
                 <template>
-                    <name>Windows EventLog</name>
+                    <name>Windows EventLog JP</name>
                 </template>
                 <template>
-                    <name>Windows filesystems</name>
+                    <name>Windows filesystems JP</name>
                 </template>
                 <template>
-                    <name>Windows generic</name>
+                    <name>Windows generic JP</name>
                 </template>
                 <template>
-                    <name>Windows memory</name>
+                    <name>Windows memory JP</name>
                 </template>
                 <template>
-                    <name>Windows network</name>
+                    <name>Windows network JP</name>
                 </template>
                 <template>
-                    <name>Windows physical disks</name>
+                    <name>Windows physical disks JP</name>
                 </template>
                 <template>
-                    <name>Windows services</name>
+                    <name>Windows services JP</name>
                 </template>
                 <template>
-                    <name>Windows Signin Users</name>
+                    <name>Windows Signin Users JP</name>
                 </template>
                 <template>
-                    <name>Zabbix agent</name>
+                    <name>Zabbix agent JP</name>
                 </template>
             </templates>
             <groups>
@@ -1929,7 +1929,7 @@ Template tooling version used: 0.34</description>
             </screens>
         </template>
         <template>
-            <template>Windows services</template>
+            <template>Windows services JP</template>
             <name>Windows サービス</name>
             <description>Template Services OS Windows&#13;
 &#13;
@@ -2029,7 +2029,7 @@ Template tooling version used: 0.34</description>
             </macros>
         </template>
         <template>
-            <template>Windows Signin Users</template>
+            <template>Windows Signin Users JP</template>
             <name>Windows ログインユーザ監視</name>
             <groups>
                 <group>
@@ -2046,7 +2046,7 @@ Template tooling version used: 0.34</description>
     </templates>
     <triggers>
         <trigger>
-            <expression>{Windows memory:system.swap.size[,pfree].min(5m)}&lt;{$SWAP.PFREE.MIN.WARN} and {Windows memory:system.swap.size[,total].last()}&gt;0</expression>
+            <expression>{Windows memory JP:system.swap.size[,pfree].min(5m)}&lt;{$SWAP.PFREE.MIN.WARN} and {Windows memory JP:system.swap.size[,total].last()}&gt;0</expression>
             <name>High swap space usage ( less than {$SWAP.PFREE.MIN.WARN}% free)</name>
             <opdata>Free: {ITEM.LASTVALUE1}, total: {ITEM.LASTVALUE2}</opdata>
             <priority>WARNING</priority>
@@ -2054,7 +2054,7 @@ Template tooling version used: 0.34</description>
             <dependencies>
                 <dependency>
                     <name>メモリ使用率上昇 [5分] ( &gt;{$MEMORY.UTIL.MAX}%)</name>
-                    <expression>{Windows memory:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                    <expression>{Windows memory JP:vm.memory.util.min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
                 </dependency>
             </dependencies>
         </trigger>
@@ -2069,7 +2069,7 @@ Template tooling version used: 0.34</description>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Windows CPU</host>
+                        <host>Windows CPU JP</host>
                         <key>perf_counter_en[&quot;\Processor Information(_total)\% User Time&quot;]</key>
                     </item>
                 </graph_item>
@@ -2077,7 +2077,7 @@ Template tooling version used: 0.34</description>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Windows CPU</host>
+                        <host>Windows CPU JP</host>
                         <key>perf_counter_en[&quot;\Processor Information(_total)\% Privileged Time&quot;]</key>
                     </item>
                 </graph_item>
@@ -2092,7 +2092,7 @@ Template tooling version used: 0.34</description>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>1A7C11</color>
                     <item>
-                        <host>Windows CPU</host>
+                        <host>Windows CPU JP</host>
                         <key>system.cpu.util</key>
                     </item>
                 </graph_item>
@@ -2104,7 +2104,7 @@ Template tooling version used: 0.34</description>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Windows CPU</host>
+                        <host>Windows CPU JP</host>
                         <key>perf_counter_en[&quot;\System\Context Switches/sec&quot;]</key>
                     </item>
                 </graph_item>
@@ -2112,7 +2112,7 @@ Template tooling version used: 0.34</description>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Windows CPU</host>
+                        <host>Windows CPU JP</host>
                         <key>perf_counter_en[&quot;\Processor Information(_total)\% Interrupt Time&quot;]</key>
                     </item>
                 </graph_item>
@@ -2124,7 +2124,7 @@ Template tooling version used: 0.34</description>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Windows memory</host>
+                        <host>Windows memory JP</host>
                         <key>system.swap.size[,free]</key>
                     </item>
                 </graph_item>
@@ -2132,7 +2132,7 @@ Template tooling version used: 0.34</description>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Windows memory</host>
+                        <host>Windows memory JP</host>
                         <key>system.swap.size[,total]</key>
                     </item>
                 </graph_item>
@@ -2147,7 +2147,7 @@ Template tooling version used: 0.34</description>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>1A7C11</color>
                     <item>
-                        <host>Windows memory</host>
+                        <host>Windows memory JP</host>
                         <key>vm.memory.util</key>
                     </item>
                 </graph_item>
