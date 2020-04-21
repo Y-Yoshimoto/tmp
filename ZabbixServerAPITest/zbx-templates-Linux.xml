@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.4</version>
-    <date>2020-04-20T05:57:12Z</date>
+    <date>2020-04-21T05:40:27Z</date>
     <groups>
         <group>
             <name>テンプレート</name>
@@ -12,7 +12,7 @@
     </groups>
     <templates>
         <template>
-            <template>Linux CPU</template>
+            <template>Linux CPU JP</template>
             <name>Linux CPU</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -148,9 +148,9 @@ return (100 - value)</params>
                             <dependencies>
                                 <dependency>
                                     <name>ロードアベレージ上昇 (per CPU load over {$LOAD_AVG_PER_CPU.MAX.WARN} for 5m)</name>
-                                    <expression>{Linux CPU:system.cpu.load[all,avg1].min(5m)}/{Linux CPU:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
-and {Linux CPU:system.cpu.load[all,avg5].last()}&gt;0&#13;
-and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
+                                    <expression>{Linux CPU JP:system.cpu.load[all,avg1].min(5m)}/{Linux CPU JP:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
+and {Linux CPU JP:system.cpu.load[all,avg5].last()}&gt;0&#13;
+and {Linux CPU JP:system.cpu.load[all,avg15].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -163,9 +163,9 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                             <dependencies>
                                 <dependency>
                                     <name>ロードアベレージ上昇 (per CPU load over {$LOAD_AVG_PER_CPU.MAX.WARN} for 5m)</name>
-                                    <expression>{Linux CPU:system.cpu.load[all,avg1].min(5m)}/{Linux CPU:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
-and {Linux CPU:system.cpu.load[all,avg5].last()}&gt;0&#13;
-and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
+                                    <expression>{Linux CPU JP:system.cpu.load[all,avg1].min(5m)}/{Linux CPU JP:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
+and {Linux CPU JP:system.cpu.load[all,avg5].last()}&gt;0&#13;
+and {Linux CPU JP:system.cpu.load[all,avg15].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -178,9 +178,9 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                             <dependencies>
                                 <dependency>
                                     <name>ロードアベレージ上昇 (per CPU load over {$LOAD_AVG_PER_CPU.MAX.WARN} for 5m)</name>
-                                    <expression>{Linux CPU:system.cpu.load[all,avg1].min(5m)}/{Linux CPU:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
-and {Linux CPU:system.cpu.load[all,avg5].last()}&gt;0&#13;
-and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
+                                    <expression>{Linux CPU JP:system.cpu.load[all,avg1].min(5m)}/{Linux CPU JP:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
+and {Linux CPU JP:system.cpu.load[all,avg5].last()}&gt;0&#13;
+and {Linux CPU JP:system.cpu.load[all,avg15].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -332,7 +332,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
             </macros>
         </template>
         <template>
-            <template>Linux Filesystem</template>
+            <template>Linux Filesystem JP</template>
             <name>Linux ファイルシステム</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -412,7 +412,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                                     <dependencies>
                                         <dependency>
                                             <name>{#FSNAME}: ファイル数上限警告 (free &lt; {$VFS.FS.INODE.PFREE.MIN.CRIT:&quot;{#FSNAME}&quot;}%)</name>
-                                            <expression>{Linux Filesystem:vfs.fs.inode[{#FSNAME},pfree].min(5m)}&lt;{$VFS.FS.INODE.PFREE.MIN.CRIT:&quot;{#FSNAME}&quot;}</expression>
+                                            <expression>{Linux Filesystem JP:vfs.fs.inode[{#FSNAME},pfree].min(5m)}&lt;{$VFS.FS.INODE.PFREE.MIN.CRIT:&quot;{#FSNAME}&quot;}</expression>
                                         </dependency>
                                     </dependencies>
                                 </trigger_prototype>
@@ -471,8 +471,8 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Linux Filesystem:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
-(({Linux Filesystem:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Linux Filesystem:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <expression>{Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Linux Filesystem JP:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem JP:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                             <name>{#FSNAME}: 空き容量減少 ({$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
                             <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
                             <priority>AVERAGE</priority>
@@ -482,8 +482,8 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
  - The disk will be full in less than 24 hours.</description>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Linux Filesystem:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;} and&#13;
-(({Linux Filesystem:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem:vfs.fs.size[{#FSNAME},used].last()})&lt;10G or {Linux Filesystem:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                            <expression>{Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;} and&#13;
+(({Linux Filesystem JP:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem JP:vfs.fs.size[{#FSNAME},used].last()})&lt;10G or {Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                             <name>{#FSNAME}:  空き容量減少 ( {$VFS.FS.PUSED.MAX.WARN:&quot;{#FSNAME}&quot;}%)</name>
                             <opdata>Space used: {ITEM.LASTVALUE3} of {ITEM.LASTVALUE2} ({ITEM.LASTVALUE1})</opdata>
                             <priority>WARNING</priority>
@@ -494,8 +494,8 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>{#FSNAME}: 空き容量減少 ({$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;}%)</name>
-                                    <expression>{Linux Filesystem:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
-(({Linux Filesystem:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Linux Filesystem:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
+                                    <expression>{Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].last()}&gt;{$VFS.FS.PUSED.MAX.CRIT:&quot;{#FSNAME}&quot;} and&#13;
+(({Linux Filesystem JP:vfs.fs.size[{#FSNAME},total].last()}-{Linux Filesystem JP:vfs.fs.size[{#FSNAME},used].last()})&lt;5G or {Linux Filesystem JP:vfs.fs.size[{#FSNAME},pused].timeleft(1h,,100)}&lt;1d)</expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
@@ -515,7 +515,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                                     <color>C80000</color>
                                     <calc_fnc>ALL</calc_fnc>
                                     <item>
-                                        <host>Linux Filesystem</host>
+                                        <host>Linux Filesystem JP</host>
                                         <key>vfs.fs.size[{#FSNAME},pused]</key>
                                     </item>
                                 </graph_item>
@@ -530,7 +530,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <ymin_type_1>FIXED</ymin_type_1>
                             <ymax_type_1>ITEM</ymax_type_1>
                             <ymax_item_1>
-                                <host>Linux Filesystem</host>
+                                <host>Linux Filesystem JP</host>
                                 <key>vfs.fs.size[{#FSNAME},total]</key>
                             </ymax_item_1>
                             <graph_items>
@@ -540,7 +540,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                                     <calc_fnc>ALL</calc_fnc>
                                     <type>GRAPH_SUM</type>
                                     <item>
-                                        <host>Linux Filesystem</host>
+                                        <host>Linux Filesystem JP</host>
                                         <key>vfs.fs.size[{#FSNAME},total]</key>
                                     </item>
                                 </graph_item>
@@ -550,7 +550,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                                     <color>C80000</color>
                                     <calc_fnc>ALL</calc_fnc>
                                     <item>
-                                        <host>Linux Filesystem</host>
+                                        <host>Linux Filesystem JP</host>
                                         <key>vfs.fs.size[{#FSNAME},used]</key>
                                     </item>
                                 </graph_item>
@@ -599,7 +599,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
             </macros>
         </template>
         <template>
-            <template>Linux Generic</template>
+            <template>Linux Generic JP</template>
             <name>Linux 一般</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -675,7 +675,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>プロセス数制限警告 (over 80% used)</name>
-                                    <expression>{Linux Generic:proc.num.last()}/{Linux Generic:kernel.maxproc.last()}*100&gt;80</expression>
+                                    <expression>{Linux Generic JP:proc.num.last()}/{Linux Generic JP:kernel.maxproc.last()}*100&gt;80</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -820,7 +820,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>ホスト名変更({ITEM.VALUE})</name>
-                                    <expression>{Linux Generic:system.hostname.diff()}=1 and {Linux Generic:system.hostname.strlen()}&gt;0</expression>
+                                    <expression>{Linux Generic JP:system.hostname.diff()}=1 and {Linux Generic JP:system.hostname.strlen()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -926,11 +926,11 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>OSバージョン更新</name>
-                                    <expression>{Linux Generic:system.sw.os.diff()}=1 and {Linux Generic:system.sw.os.strlen()}&gt;0</expression>
+                                    <expression>{Linux Generic JP:system.sw.os.diff()}=1 and {Linux Generic JP:system.sw.os.strlen()}&gt;0</expression>
                                 </dependency>
                                 <dependency>
                                     <name>ホスト名変更({ITEM.VALUE})</name>
-                                    <expression>{Linux Generic:system.hostname.diff()}=1 and {Linux Generic:system.hostname.strlen()}&gt;0</expression>
+                                    <expression>{Linux Generic JP:system.hostname.diff()}=1 and {Linux Generic JP:system.hostname.strlen()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -953,7 +953,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
             </macros>
         </template>
         <template>
-            <template>Linux memory by Zabbix agent</template>
+            <template>Linux memory by Zabbix agent JP</template>
             <name>Linux メモリ</name>
             <description>Template tooling version used: 0.34</description>
             <groups>
@@ -1058,7 +1058,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>利用可能メモリ減少 ( &lt; {$MEMORY.AVAILABLE.MIN} of {ITEM.VALUE2})</name>
-                                    <expression>{Linux memory by Zabbix agent:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent:vm.memory.size[total].last()}&gt;0</expression>
+                                    <expression>{Linux memory by Zabbix agent JP:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent JP:vm.memory.size[total].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -1070,7 +1070,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>利用可能メモリ減少 ( &lt; {$MEMORY.AVAILABLE.MIN} of {ITEM.VALUE2})</name>
-                                    <expression>{Linux memory by Zabbix agent:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent:vm.memory.size[total].last()}&gt;0</expression>
+                                    <expression>{Linux memory by Zabbix agent JP:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent JP:vm.memory.size[total].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -1082,7 +1082,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
                             <dependencies>
                                 <dependency>
                                     <name>利用可能メモリ減少 ( &lt; {$MEMORY.AVAILABLE.MIN} of {ITEM.VALUE2})</name>
-                                    <expression>{Linux memory by Zabbix agent:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent:vm.memory.size[total].last()}&gt;0</expression>
+                                    <expression>{Linux memory by Zabbix agent JP:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent JP:vm.memory.size[total].last()}&gt;0</expression>
                                 </dependency>
                             </dependencies>
                         </trigger>
@@ -1142,7 +1142,7 @@ As symptoms, 'No space left on device' or 'Disk is full' errors may be seen even
             </macros>
         </template>
         <template>
-            <template>Linux network interfaces</template>
+            <template>Linux network interfaces JP</template>
             <name>Linux ネットワーク</name>
             <description>Known Issues:&#13;
 &#13;
@@ -1384,15 +1384,15 @@ Reference: https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-net<
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].change()}&lt;0 and {Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}&gt;0&#13;
+                            <expression>{Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].change()}&lt;0 and {Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}&gt;0&#13;
 and&#13;
-({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}=6&#13;
-or {Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}=1)&#13;
+({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}=6&#13;
+or {Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].last()}=1)&#13;
 and&#13;
-({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2)</expression>
+({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2)</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].change()}&gt;0 and {Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].prev()}&gt;0) or&#13;
-({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2)</recovery_expression>
+                            <recovery_expression>({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].change()}&gt;0 and {Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/type&quot;].prev()}&gt;0) or&#13;
+({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2)</recovery_expression>
                             <name>If {#IFNAME}: 速度低下</name>
                             <opdata>Current reported speed: {ITEM.LASTVALUE1}</opdata>
                             <priority>INFO</priority>
@@ -1400,17 +1400,17 @@ and&#13;
                             <dependencies>
                                 <dependency>
                                     <name>If {#IFNAME}: リンクダウン</name>
-                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2 and {Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].diff()}=1)</expression>
-                                    <recovery_expression>{Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2</recovery_expression>
+                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2 and {Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].diff()}=1)</expression>
+                                    <recovery_expression>{Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2</recovery_expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{Linux network interfaces:net.if.in[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}&#13;
-or {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}</expression>
+                            <expression>{Linux network interfaces JP:net.if.in[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}&#13;
+or {Linux network interfaces JP:net.if.out[&quot;{#IFNAME}&quot;,errors].min(5m)}&gt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}</expression>
                             <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
-                            <recovery_expression>{Linux network interfaces:net.if.in[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8&#13;
-and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8</recovery_expression>
+                            <recovery_expression>{Linux network interfaces JP:net.if.in[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8&#13;
+and {Linux network interfaces JP:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&lt;{$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;}*0.8</recovery_expression>
                             <name>If {#IFNAME}: 高エラー ( &gt; {$IF.ERRORS.WARN:&quot;{#IFNAME}&quot;} for 5m)</name>
                             <opdata>errors in: {ITEM.LASTVALUE1}, errors out: {ITEM.LASTVALUE2}</opdata>
                             <priority>WARNING</priority>
@@ -1418,8 +1418,8 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                             <dependencies>
                                 <dependency>
                                     <name>If {#IFNAME}: リンクダウン</name>
-                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2 and {Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].diff()}=1)</expression>
-                                    <recovery_expression>{Linux network interfaces:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2</recovery_expression>
+                                    <expression>{$IFCONTROL:&quot;{#IFNAME}&quot;}=1 and ({Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}=2 and {Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].diff()}=1)</expression>
+                                    <recovery_expression>{Linux network interfaces JP:vfs.file.contents[&quot;/sys/class/net/{#IFNAME}/operstate&quot;].last()}&lt;&gt;2</recovery_expression>
                                 </dependency>
                             </dependencies>
                         </trigger_prototype>
@@ -1432,7 +1432,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;]</key>
                                     </item>
                                 </graph_item>
@@ -1441,7 +1441,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <drawtype>BOLD_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;]</key>
                                     </item>
                                 </graph_item>
@@ -1450,7 +1450,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <color>F63100</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;,errors]</key>
                                     </item>
                                 </graph_item>
@@ -1459,7 +1459,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <color>A54F10</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;,errors]</key>
                                     </item>
                                 </graph_item>
@@ -1468,7 +1468,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <color>FC6EA3</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.out[&quot;{#IFNAME}&quot;,dropped]</key>
                                     </item>
                                 </graph_item>
@@ -1477,7 +1477,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                                     <color>6C59DC</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Linux network interfaces</host>
+                                        <host>Linux network interfaces JP</host>
                                         <key>net.if.in[&quot;{#IFNAME}&quot;,dropped]</key>
                                     </item>
                                 </graph_item>
@@ -1516,7 +1516,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
                             <style>0</style>
                             <resource>
                                 <name>If {#IFNAME}: ネットワークトラフィック</name>
-                                <host>Linux network interfaces</host>
+                                <host>Linux network interfaces JP</host>
                             </resource>
                             <width>1700</width>
                             <height>300</height>
@@ -1538,7 +1538,7 @@ and {Linux network interfaces:net.if.out[&quot;{#IFNAME}&quot;,errors].max(5m)}&
             </screens>
         </template>
         <template>
-            <template>Linux Server Template_CentOS8</template>
+            <template>Linux Server Template_CentOS8 JP</template>
             <name>Linux Server テンプレート(CentOS8)</name>
             <description>Official Linux template. Requires agent of Zabbix 3.0.14, 3.4.5 and 4.0.0 or newer.&#13;
 &#13;
@@ -1551,31 +1551,31 @@ You can discuss this template or leave feedback on our forum https://www.zabbix.
 Template tooling version used: 0.34</description>
             <templates>
                 <template>
-                    <name>ICMP Ping_JP</name>
+                    <name>ICMP Ping_JP JP</name>
                 </template>
                 <template>
-                    <name>Linux CPU</name>
+                    <name>Linux CPU JP</name>
                 </template>
                 <template>
-                    <name>Linux Filesystem</name>
+                    <name>Linux Filesystem JP</name>
                 </template>
                 <template>
-                    <name>Linux Generic</name>
+                    <name>Linux Generic JP</name>
                 </template>
                 <template>
-                    <name>Linux memory by Zabbix agent</name>
+                    <name>Linux memory by Zabbix agent JP</name>
                 </template>
                 <template>
-                    <name>Linux network interfaces</name>
+                    <name>Linux network interfaces JP</name>
                 </template>
                 <template>
-                    <name>Linux Storage</name>
+                    <name>Linux Storage JP</name>
                 </template>
                 <template>
-                    <name>Linux Systemd</name>
+                    <name>Linux Systemd JP</name>
                 </template>
                 <template>
-                    <name>Zabbix agent</name>
+                    <name>Zabbix agent JP</name>
                 </template>
             </templates>
             <groups>
@@ -1602,7 +1602,7 @@ Template tooling version used: 0.34</description>
                             <style>0</style>
                             <resource>
                                 <name>CPU 使用状況 簡易</name>
-                                <host>Linux Server Template_CentOS8</host>
+                                <host>Linux Server Template_CentOS8 JP</host>
                             </resource>
                             <width>1400</width>
                             <height>300</height>
@@ -1624,7 +1624,7 @@ Template tooling version used: 0.34</description>
                             <style>0</style>
                             <resource>
                                 <name>CPU 使用状況 割合</name>
-                                <host>Linux Server Template_CentOS8</host>
+                                <host>Linux Server Template_CentOS8 JP</host>
                             </resource>
                             <width>300</width>
                             <height>300</height>
@@ -1646,7 +1646,7 @@ Template tooling version used: 0.34</description>
                             <style>0</style>
                             <resource>
                                 <name>メモリ実使用率</name>
-                                <host>Linux Server Template_CentOS8</host>
+                                <host>Linux Server Template_CentOS8 JP</host>
                             </resource>
                             <width>1700</width>
                             <height>200</height>
@@ -1668,7 +1668,7 @@ Template tooling version used: 0.34</description>
             </screens>
         </template>
         <template>
-            <template>Linux Storage</template>
+            <template>Linux Storage JP</template>
             <name>Linux ストレージ</name>
             <description>Known Issues:&#13;
 &#13;
@@ -1982,7 +1982,7 @@ return JSON.stringify(parsed);</params>
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{Linux Storage:vfs.dev.read.await[{#DEVNAME}].min(15m)} &gt; {$VFS.DEV.READ.AWAIT.WARN:&quot;{#DEVNAME}&quot;} or {Linux Storage:vfs.dev.write.await[{#DEVNAME}].min(15m)} &gt; {$VFS.DEV.WRITE.AWAIT.WARN:&quot;{#DEVNAME}&quot;}</expression>
+                            <expression>{Linux Storage JP:vfs.dev.read.await[{#DEVNAME}].min(15m)} &gt; {$VFS.DEV.READ.AWAIT.WARN:&quot;{#DEVNAME}&quot;} or {Linux Storage JP:vfs.dev.write.await[{#DEVNAME}].min(15m)} &gt; {$VFS.DEV.WRITE.AWAIT.WARN:&quot;{#DEVNAME}&quot;}</expression>
                             <name>{#DEVNAME}: ディスクIO警告 (read &gt; {$VFS.DEV.READ.AWAIT.WARN:&quot;{#DEVNAME}&quot;} ms for 15m or write &gt; {$VFS.DEV.WRITE.AWAIT.WARN:&quot;{#DEVNAME}&quot;} ms for 15m)</name>
                             <priority>WARNING</priority>
                             <description>This trigger might indicate disk {#DEVNAME} saturation.</description>
@@ -1997,7 +1997,7 @@ return JSON.stringify(parsed);</params>
                                 <graph_item>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.read.rate[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2006,7 +2006,7 @@ return JSON.stringify(parsed);</params>
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.write.rate[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2020,7 +2020,7 @@ return JSON.stringify(parsed);</params>
                                 <graph_item>
                                     <color>1A7C11</color>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.read.await[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2029,7 +2029,7 @@ return JSON.stringify(parsed);</params>
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.write.await[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2044,7 +2044,7 @@ return JSON.stringify(parsed);</params>
                                     <color>1A7C11</color>
                                     <yaxisside>RIGHT</yaxisside>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.queue_size[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2053,7 +2053,7 @@ return JSON.stringify(parsed);</params>
                                     <drawtype>GRADIENT_LINE</drawtype>
                                     <color>2774A4</color>
                                     <item>
-                                        <host>Linux Storage</host>
+                                        <host>Linux Storage JP</host>
                                         <key>vfs.dev.util[{#DEVNAME}]</key>
                                     </item>
                                 </graph_item>
@@ -2099,7 +2099,7 @@ return JSON.stringify(parsed);</params>
             </macros>
         </template>
         <template>
-            <template>Linux Systemd</template>
+            <template>Linux Systemd JP</template>
             <name>Linux Systemd監視</name>
             <groups>
                 <group>
@@ -2137,7 +2137,7 @@ return JSON.stringify(parsed);</params>
     </templates>
     <triggers>
         <trigger>
-            <expression>{Linux memory by Zabbix agent:system.swap.size[,pfree].min(5m)}&lt;{$SWAP.PFREE.MIN.WARN} and {Linux memory by Zabbix agent:system.swap.size[,total].last()}&gt;0</expression>
+            <expression>{Linux memory by Zabbix agent JP:system.swap.size[,pfree].min(5m)}&lt;{$SWAP.PFREE.MIN.WARN} and {Linux memory by Zabbix agent JP:system.swap.size[,total].last()}&gt;0</expression>
             <name>SWAP使用率上昇 ( less than {$SWAP.PFREE.MIN.WARN}% free)</name>
             <opdata>Free: {ITEM.LASTVALUE1}, total: {ITEM.LASTVALUE2}</opdata>
             <priority>WARNING</priority>
@@ -2145,31 +2145,31 @@ return JSON.stringify(parsed);</params>
             <dependencies>
                 <dependency>
                     <name>メモリ使用率上昇 [5分] ( &gt;{$MEMORY.UTIL.MAX}%)</name>
-                    <expression>{Linux memory by Zabbix agent:vm.memory.size[pavailable].min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
+                    <expression>{Linux memory by Zabbix agent JP:vm.memory.size[pavailable].min(5m)}&gt;{$MEMORY.UTIL.MAX}</expression>
                 </dependency>
                 <dependency>
                     <name>利用可能メモリ減少 ( &lt; {$MEMORY.AVAILABLE.MIN} of {ITEM.VALUE2})</name>
-                    <expression>{Linux memory by Zabbix agent:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent:vm.memory.size[total].last()}&gt;0</expression>
+                    <expression>{Linux memory by Zabbix agent JP:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent JP:vm.memory.size[total].last()}&gt;0</expression>
                 </dependency>
             </dependencies>
         </trigger>
         <trigger>
-            <expression>{Linux Generic:proc.num.last()}/{Linux Generic:kernel.maxproc.last()}*100&gt;80</expression>
+            <expression>{Linux Generic JP:proc.num.last()}/{Linux Generic JP:kernel.maxproc.last()}*100&gt;80</expression>
             <name>プロセス数制限警告 (over 80% used)</name>
             <opdata>{ITEM.LASTVALUE1} active, {ITEM.LASTVALUE2} limit.</opdata>
             <priority>WARNING</priority>
         </trigger>
         <trigger>
-            <expression>{Linux CPU:system.cpu.load[all,avg1].min(5m)}/{Linux CPU:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
-and {Linux CPU:system.cpu.load[all,avg5].last()}&gt;0&#13;
-and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
+            <expression>{Linux CPU JP:system.cpu.load[all,avg1].min(5m)}/{Linux CPU JP:system.cpu.num.last()}&gt;{$LOAD_AVG_PER_CPU.MAX.WARN}&#13;
+and {Linux CPU JP:system.cpu.load[all,avg5].last()}&gt;0&#13;
+and {Linux CPU JP:system.cpu.load[all,avg15].last()}&gt;0</expression>
             <name>ロードアベレージ上昇 (per CPU load over {$LOAD_AVG_PER_CPU.MAX.WARN} for 5m)</name>
             <opdata>Load averages(1m 5m 15m): ({ITEM.LASTVALUE1} {ITEM.LASTVALUE3} {ITEM.LASTVALUE4}), # of CPUs: {ITEM.LASTVALUE2}</opdata>
             <priority>AVERAGE</priority>
             <description>Per CPU load average is too high. Your system may be slow to respond.</description>
         </trigger>
         <trigger>
-            <expression>{Linux memory by Zabbix agent:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent:vm.memory.size[total].last()}&gt;0</expression>
+            <expression>{Linux memory by Zabbix agent JP:vm.memory.size[available].min(5m)}&lt;{$MEMORY.AVAILABLE.MIN} and {Linux memory by Zabbix agent JP:vm.memory.size[total].last()}&gt;0</expression>
             <name>利用可能メモリ減少 ( &lt; {$MEMORY.AVAILABLE.MIN} of {ITEM.VALUE2})</name>
             <opdata>Available: {ITEM.LASTVALUE1}, total: {ITEM.LASTVALUE2}</opdata>
             <priority>AVERAGE</priority>
@@ -2185,7 +2185,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.load[all,avg1]</key>
                     </item>
                 </graph_item>
@@ -2193,7 +2193,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.load[all,avg5]</key>
                     </item>
                 </graph_item>
@@ -2201,7 +2201,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>2</sortorder>
                     <color>F63100</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.load[all,avg15]</key>
                     </item>
                 </graph_item>
@@ -2210,7 +2210,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <color>A54F10</color>
                     <yaxisside>RIGHT</yaxisside>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.num</key>
                     </item>
                 </graph_item>
@@ -2228,7 +2228,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,system]</key>
                     </item>
                 </graph_item>
@@ -2236,7 +2236,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,user]</key>
                     </item>
                 </graph_item>
@@ -2244,7 +2244,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>2</sortorder>
                     <color>F63100</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,nice]</key>
                     </item>
                 </graph_item>
@@ -2252,7 +2252,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>3</sortorder>
                     <color>A54F10</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,iowait]</key>
                     </item>
                 </graph_item>
@@ -2260,7 +2260,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>4</sortorder>
                     <color>FC6EA3</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,steal]</key>
                     </item>
                 </graph_item>
@@ -2268,7 +2268,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>5</sortorder>
                     <color>6C59DC</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,interrupt]</key>
                     </item>
                 </graph_item>
@@ -2276,7 +2276,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>6</sortorder>
                     <color>AC8C14</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,softirq]</key>
                     </item>
                 </graph_item>
@@ -2293,7 +2293,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,system]</key>
                     </item>
                 </graph_item>
@@ -2301,7 +2301,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,user]</key>
                     </item>
                 </graph_item>
@@ -2309,7 +2309,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>2</sortorder>
                     <color>A54F10</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,iowait]</key>
                     </item>
                 </graph_item>
@@ -2326,7 +2326,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,system]</key>
                     </item>
                 </graph_item>
@@ -2334,7 +2334,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,user]</key>
                     </item>
                 </graph_item>
@@ -2342,7 +2342,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>2</sortorder>
                     <color>F63100</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,nice]</key>
                     </item>
                 </graph_item>
@@ -2350,7 +2350,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>3</sortorder>
                     <color>A54F10</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,iowait]</key>
                     </item>
                 </graph_item>
@@ -2358,7 +2358,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>4</sortorder>
                     <color>FC6EA3</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,steal]</key>
                     </item>
                 </graph_item>
@@ -2366,7 +2366,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>5</sortorder>
                     <color>6C59DC</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,interrupt]</key>
                     </item>
                 </graph_item>
@@ -2374,7 +2374,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>6</sortorder>
                     <color>AC8C14</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util[,softirq]</key>
                     </item>
                 </graph_item>
@@ -2391,7 +2391,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.util</key>
                     </item>
                 </graph_item>
@@ -2406,7 +2406,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.switches</key>
                     </item>
                 </graph_item>
@@ -2414,7 +2414,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux CPU</host>
+                        <host>Linux CPU JP</host>
                         <key>system.cpu.intr</key>
                     </item>
                 </graph_item>
@@ -2428,7 +2428,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>system.swap.size[,free]</key>
                     </item>
                 </graph_item>
@@ -2436,7 +2436,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>system.swap.size[,total]</key>
                     </item>
                 </graph_item>
@@ -2451,7 +2451,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                 <graph_item>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux Generic</host>
+                        <host>Linux Generic JP</host>
                         <key>proc.num</key>
                     </item>
                 </graph_item>
@@ -2459,7 +2459,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <sortorder>1</sortorder>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux Generic</host>
+                        <host>Linux Generic JP</host>
                         <key>proc.num[,,run]</key>
                     </item>
                 </graph_item>
@@ -2473,7 +2473,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>vm.memory.size[pused]</key>
                     </item>
                 </graph_item>
@@ -2484,7 +2484,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
             <ymin_type_1>FIXED</ymin_type_1>
             <ymax_type_1>ITEM</ymax_type_1>
             <ymax_item_1>
-                <host>Linux memory by Zabbix agent</host>
+                <host>Linux memory by Zabbix agent JP</host>
                 <key>vm.memory.size[total]</key>
             </ymax_item_1>
             <graph_items>
@@ -2492,7 +2492,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>FILLED_REGION</drawtype>
                     <color>ECEFF1</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>vm.memory.size[total]</key>
                     </item>
                 </graph_item>
@@ -2501,7 +2501,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>2774A4</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>vm.memory.size[available]</key>
                     </item>
                 </graph_item>
@@ -2510,7 +2510,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>BOLD_LINE</drawtype>
                     <color>E53935</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>vm.memory.size[used]</key>
                     </item>
                 </graph_item>
@@ -2525,7 +2525,7 @@ and {Linux CPU:system.cpu.load[all,avg15].last()}&gt;0</expression>
                     <drawtype>GRADIENT_LINE</drawtype>
                     <color>1A7C11</color>
                     <item>
-                        <host>Linux memory by Zabbix agent</host>
+                        <host>Linux memory by Zabbix agent JP</host>
                         <key>vm.memory.size[pavailable]</key>
                     </item>
                 </graph_item>
