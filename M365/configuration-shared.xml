@@ -1,0 +1,7 @@
+<Configuration> 
+  <Add SourcePath="\\serverb\share" OfficeClientEdition="32" Version="16.0.6741.2056" DownloadPath="\\servera\share"> 
+    <Product ID="O365ProPlusRetail" > 
+      <Language ID="ja-jp" />      
+    </Product> 
+  </Add> 
+</Configuration>
