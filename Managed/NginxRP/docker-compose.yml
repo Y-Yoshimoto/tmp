@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    nginx_proxy:
+        image: nginx_custom
+        build: nginx_custom
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        networks:
+            - zbxdocker_default
+            - gitbucketregistry_default
+
+networks:
+    zbxdocker_default:
+        external: true
+    gitbucketregistry_default:
+        external: true

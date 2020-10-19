@@ -1,0 +1,23 @@
+version: "3"
+services:
+  gitbabucket:
+    image: gitbucket/gitbucket:latest
+    # build: gitbucket
+    ports:
+      - 28080:8080
+    environment:
+      - TZ=Asia/Tokyo
+      - GITBUCKET_BASE_URL=http://192.168.1.140/GitBucket/
+    volumes:
+      - bucketReg:/gitbucket
+  registry:
+    image: registry:latest
+    # build: registry
+    ports:
+      - 5000:5000
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - bucketReg:/var/lib/registry
+volumes:
+  bucketReg:
