@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+    nginx_proxy:
+        image: nginx_proxly
+        build: nginx_custom
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        networks:
+            - default
+            # - OtherNW_default
+#networks:
+#OtherNW_default:
+#    external: true

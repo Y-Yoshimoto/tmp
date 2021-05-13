@@ -1,0 +1,11 @@
+version: "3"
+services:
+  python:
+    image: python_diff
+    build: python_diff
+    #restart: always
+    environment:
+      TZ: ${TZ}
+      PYTHONDONTWRITEBYTECODE: 1
+    volumes:
+      - ./python_diff/src:/usr/src/
