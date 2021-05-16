@@ -2,8 +2,8 @@
 類似度を利用したマスター検索のプロトタイプ
 
 ## コンテナ
-- python  
-  Python実行環境
+- similar_search  
+  Python実行環境
 
 ## Pythonコード
 - main.py  
