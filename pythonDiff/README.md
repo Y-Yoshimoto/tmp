@@ -1,32 +1,40 @@
-# Python Dev
-Pythonのコード実行環境用コンテナ  
-Alpine Linuxベース  
+# Similar Search 
+類似度を利用したマスター検索のプロトタイプ
 
 ## コンテナ
 - python  
   Python実行環境
 
-## サンプルコード
+## Pythonコード
 - main.py  
-main文ファイルのサンプルファイル
-- sampleClass.py  
-jsonファイルを読み込んで表示させるサンプルクラス
-- sampleFunction.py  
-時刻表示と文字列表示を行うサンプル関数
+  main文
+- subFunctions.py  
+  ファイル読み込み/ログ出力用関数
 
 ## 付随ファイル
-- Dockerfile  
-Dockerファイル
-- docker-compose.yaml  
-Docker composeのマニフェストファイル
-- .env  
-環境変数定義ファイル
-- requirements.txt  
-pipでインストールするライブラリーの定義ファイル
+- Master.csv  
+  マスターデータサンプル
+- searchData.csv  
+  検索対象データサンプル
+- Similar.csv  
+  処理結果サンプルファイル
 
-## srcディレクトリについて
-python_dev/srcディレクトリは、コンテナ内の/usr/srcにマウントしている為、
-ソースコード変更後、ビルド無しで再実行可能
+## 処理説明
+1. Master.csv, searchData.csv ファイルの読み込み
+2. 類似度を元にマスターデータから検索
+3. 検索対象と検索結果の上位を結合しデータ出力データを作成
+4. 検索結果をCSVファイルとして出力
+
+## チューニング/調整箇所
+  - masterMatch関数:  
+    ignoreStr: 検索時に無効化する文字を指定
+  - MatchjoinMaster関数:  
+    top デフォルト値で上位の何位までを取得するかを指定  
+    masterMatchの引数: 検索対象とマスターデータで類似度を測るカラムを指定  
+    Similaradd: 出力結果に吐き出すカラムを指定  
+  - main:  
+    ファイル名: 実際に使用するファイルを指定
+    header: CSVに出力するカラムを指定
 
 ## 使用方法
 1. docker-compose build  
@@ -35,14 +43,7 @@ python_dev/srcディレクトリは、コンテナ内の/usr/srcにマウント�
 コンテナの起動
 2. docker-compose ps 
 コンテナの起動確認
-3. docker-compose exec python /bin/ash  
+3. docker-compose exec similar_search /bin/bash  
 コンテナのシェルにアタッチ
 4. python main.py  
 main.pyの実行
-
-## ライブラリーの追加方法
-コンテナのシェルにアタッチした状態で、pipコマンドを実行する  
-```ash
-pip install PyMongo
-```
-インストールに成功したら、"requirements.txt"ファイルに追記し、イメージビルドの実行とコンテナの再起動を行う

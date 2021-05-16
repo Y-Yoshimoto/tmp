@@ -1,11 +1,12 @@
 version: "3"
 services:
-  python:
-    image: python_diff
-    build: python_diff
+  similar_search:
+    image: similar_search
+    build: similar_search
     #restart: always
     environment:
       TZ: ${TZ}
       PYTHONDONTWRITEBYTECODE: 1
+      PYTHONPYCACHEPREFIX: "/tmp"
     volumes:
       - ./python_diff/src:/usr/src/

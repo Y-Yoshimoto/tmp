@@ -1,8 +1,6 @@
-# FROM node:latest
-FROM python:alpine
+# FROM python:alpine
+FROM python:slim-buster
 LABEL maintaner='y-yoshimoto'
-
-RUN apk --no-cache add python3-dev
 
 ### pip
 COPY requirements.txt ./
